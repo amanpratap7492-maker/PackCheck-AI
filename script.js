@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const response =
                         await fetch(
-                            "http://127.0.0.1:8000/analyze",
+                            "/analyze",
                             {
                                 method: "POST",
                                 body: formData
@@ -842,7 +842,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "http://127.0.0.1:8000/history"
+                    "/history"
                 );
 
 
@@ -1271,7 +1271,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const response =
                         await fetch(
-                            "http://127.0.0.1:8000/history",
+                            "/history",
                             {
                                 method: "DELETE"
                             }
