@@ -66,3 +66,81 @@ Compliance Rule Checking
 Compliance Score
       ↓
 Final Compliance Status
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- Python
+- Tesseract OCR
+- OpenCV
+- Regular Expressions
+- Rule-Based Compliance Analysis
+
+---
+
+## 📁 Project Structure
+
+```text
+PackCheck-AI/
+│
+├── index.html
+├── script.js
+├── main.py
+├── start_demo.bat
+├── README.md
+```
+
+---
+
+## 🖥️ How to Use
+
+1. Open the PackCheck-AI application.
+2. Upload an image of a packaged product.
+3. The system performs OCR and extracts text.
+4. Important product information is identified automatically.
+5. Compliance rules are applied.
+6. A compliance score and report are generated.
+
+---
+
+## 📊 Compliance Analysis
+
+The system generates:
+
+- Compliance Status
+- Compliance Score
+- Detected Information
+- Missing Fields
+- OCR Confidence
+- Potential Issues
+
+---
+
+## 🔮 Future Scope
+
+- Improved OCR accuracy for low-quality images
+- Support for multiple languages
+- Advanced AI-based label understanding
+- Barcode and QR-code analysis
+- Mobile application
+- Cloud-based deployment
+- Automated compliance report generation
+
+---
+
+## ⚠️ Disclaimer
+
+PackCheck-AI is an academic/prototype project intended to assist with the initial analysis of packaged-product labels. It does not constitute official legal, regulatory, or compliance advice.
+
+---
+
+## 👨‍💻 Project
+
+**PackCheck-AI — AI-Based Packaging Compliance Scanner**
+
+Developed as an academic project.
