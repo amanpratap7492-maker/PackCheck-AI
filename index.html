@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PackCheck-AI | Packaging Compliance Scanner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="home">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="brand-icon">✓</div>
+            <h1>PackCheck-AI</h1>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#results">Results</a>
+            <a href="#history">History</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                AI-POWERED PACKAGING INSPECTION
+            </div>
+
+            <h2>
+                Smart Packaging
+                <span>Compliance Scanner</span>
+            </h2>
+
+            <p>
+                Upload a packaged product image and analyze
+                important label information using AI-powered OCR
+                and compliance rules.
+            </p>
+
+            <div class="hero-features">
+
+                <span>✓ OCR Analysis</span>
+                <span>✓ Label Extraction</span>
+                <span>✓ Compliance Check</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYZER ================= -->
+
+        <section class="card analyzer-card" id="analyzer">
+
+            <div class="section-heading">
+
+                <div class="section-icon">📷</div>
+
+                <div>
+                    <h2>Upload Product Image</h2>
+                    <p>
+                        Upload a clear image of the product packaging.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- UPLOAD AREA -->
+
+            <div class="upload-area">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <label
+                    for="imageInput"
+                    class="upload-label"
+                >
+                    Click here to select an image
+
+                    <small>
+                        JPG, JPEG or PNG
+                    </small>
+                </label>
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                >
+
+            </div>
+
+
+            <!-- FILE NAME -->
+
+            <div
+                id="fileName"
+                class="file-name"
+            >
+                No image selected
+            </div>
+
+
+            <!-- IMAGE PREVIEW -->
+
+            <div
+                id="previewContainer"
+                class="preview-container hidden"
+            >
+
+                <h3>Image Preview</h3>
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Product Preview"
+                >
+
+            </div>
+
+
+            <!-- ANALYZE BUTTON -->
+
+            <button
+                id="analyzeBtn"
+                type="button"
+            >
+                🔍 Analyze Product
+            </button>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loading"
+                class="loading hidden"
+            >
+                <div class="spinner"></div>
+
+                <div>
+                    Analyzing product...
+                    <small>
+                        Please wait while PackCheck-AI processes the image.
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= RESULT SECTION ================= -->
+
+        <section
+            id="resultSection"
+            class="hidden"
+        >
+
+            <!-- ================= COMPLIANCE RESULT ================= -->
+
+            <div
+                class="card result-card"
+                id="results"
+            >
+
+                <div class="section-heading">
+
+                    <div class="section-icon">🔍</div>
+
+                    <div>
+                        <h2>Compliance Result</h2>
+                        <p>
+                            AI-based analysis of the uploaded product label.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="status-box">
+
+                    <div class="status-label">
+                        Compliance Status
+                    </div>
+
+                    <span
+                        id="complianceStatus"
+                        class="status-badge"
+                    >
+                        Unknown
+                    </span>
+
+                </div>
+
+
+                <!-- SCORE -->
+
+                <div class="metric-box">
+
+                    <div class="metric-header">
+
+                        <strong>
+                            Compliance Score
+                        </strong>
+
+                        <span id="complianceScore">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="score-bar">
+
+                        <div
+                            id="complianceScoreBar"
+                        ></div>
+
+                    </div>
+
+
+                    <p id="scoreDescription">
+                        Waiting for analysis.
+                    </p>
+
+                </div>
+
+
+                <!-- CONFIDENCE -->
+
+                <div class="metric-box confidence-box">
+
+                    <div class="metric-header">
+
+                        <strong>
+                            AI Confidence
+                        </strong>
+
+                        <span id="confidence">
+                            0%
+                        </span>
+
+                    </div>
+
+
+                    <div class="confidence-bar">
+
+                        <div
+                            id="confidenceBar"
+                        ></div>
+
+                    </div>
+
+                    <p>
+                        Confidence level of the AI/OCR analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= EXTRACTED DATA ================= -->
+
+            <div class="card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">📋</div>
+
+                    <div>
+                        <h2>Extracted Product Information</h2>
+                        <p>
+                            Information detected from the product label.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-grid">
+
+                    <div class="info-item">
+                        <div class="info-icon">🏷️</div>
+
+                        <div>
+                            <strong>Product Name</strong>
+
+                            <span id="productName">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">⚖️</div>
+
+                        <div>
+                            <strong>Net Quantity</strong>
+
+                            <span id="netQuantity">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">₹</div>
+
+                        <div>
+                            <strong>MRP</strong>
+
+                            <span id="mrp">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">🏭</div>
+
+                        <div>
+                            <strong>Manufacturer</strong>
+
+                            <span id="manufacturer">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">📜</div>
+
+                        <div>
+                            <strong>FSSAI License</strong>
+
+                            <span id="fssai">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">📅</div>
+
+                        <div>
+                            <strong>Manufacturing Date</strong>
+
+                            <span id="mfgDate">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">⏳</div>
+
+                        <div>
+                            <strong>Use By / Best Before</strong>
+
+                            <span id="useBy">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="info-item">
+                        <div class="info-icon">🔢</div>
+
+                        <div>
+                            <strong>Batch Number</strong>
+
+                            <span id="batchNumber">
+                                Not detected
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ISSUES ================= -->
+
+            <div class="card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon warning">
+                        ⚠️
+                    </div>
+
+                    <div>
+                        <h2>Compliance Issues</h2>
+                        <p>
+                            Potential issues identified during analysis.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <ul id="issuesList">
+
+                    <li>
+                        No analysis performed yet.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <section
+            class="history-section"
+            id="history"
+        >
+
+            <div class="card">
+
+                <div class="history-header">
+
+                    <div class="section-heading history-title">
+
+                        <div class="section-icon">
+                            📊
+                        </div>
+
+                        <div>
+                            <h2>Scan History</h2>
+
+                            <p>
+                                View your previously analyzed products.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="history-actions">
+
+                        <button
+                            id="refreshHistoryBtn"
+                            class="secondary-btn"
+                            type="button"
+                        >
+                            🔄 Refresh
+                        </button>
+
+
+                        <button
+                            id="clearHistoryBtn"
+                            class="danger-btn"
+                            type="button"
+                        >
+                            🗑️ Clear History
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HISTORY LOADING -->
+
+                <div
+                    id="historyLoading"
+                    class="history-loading hidden"
+                >
+                    Loading scan history...
+                </div>
+
+
+                <!-- EMPTY HISTORY -->
+
+                <div
+                    id="historyEmpty"
+                    class="history-empty hidden"
+                >
+
+                    <div class="empty-icon">
+                        📭
+                    </div>
+
+                    <h3>
+                        No Scan History
+                    </h3>
+
+                    <p>
+                        Analyze a product to create your first scan record.
+                    </p>
+
+                </div>
+
+
+                <!-- HISTORY LIST -->
+
+                <div
+                    id="historyList"
+                    class="history-list"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+            PackCheck-AI
+        </div>
+
+        <p>
+            AI-Based Packaging Compliance Scanner
+        </p>
+
+        <small>
+            Prototype for Smart Packaging Compliance Analysis
+        </small>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
